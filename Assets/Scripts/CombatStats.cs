@@ -13,11 +13,11 @@ public class CombatStats
     /// Increases intelligence damage
     public double intelligence = 1.0;
 
-    // Decreases blunt damage
+    /// Decreases blunt damage
     public double constitution = 1.0;
-    /// Increases piercing damage
+    /// Decreases piercing damage
     public double agility = 1.0;
-    /// Increases intelligence damage
+    /// Decreases intelligence damage
     public double willpower = 1.0;
 
 
