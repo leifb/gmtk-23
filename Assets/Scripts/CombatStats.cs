@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// This class represents the combat stats (damage scaling) of an enemy.
-public class CombatStats
+public class CombatStats : MonoBehaviour
 {
 
     /// Increases blunt damage
@@ -20,9 +20,4 @@ public class CombatStats
     /// Decreases intelligence damage
     public double willpower = 1.0;
 
-
-    /// Is always created with default values
-    public CombatStats() {
-
-    }
 }
