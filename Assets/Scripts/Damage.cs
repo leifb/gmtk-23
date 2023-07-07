@@ -8,7 +8,7 @@ public class Damage : MonoBehaviour
     
     public readonly double total;
 
-    public Damage(total) {
+    public Damage(double total) {
         this.total = total;
     }
 
