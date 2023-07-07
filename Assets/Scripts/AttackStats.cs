@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// Data class that defines how much damage an attack deals.
 /// These will usually be scaled by some combad stats.
-public class AttackStats : MonoBehaviour
+public class AttackStats
 {
     /// Blunt damage
     public double blunt = 0.0;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// This class represents the combat stats (damage scaling) of an enemy.
-public class CombatStats : MonoBehaviour
+public class CombatStats
 {
 
     /// Increases blunt damage
