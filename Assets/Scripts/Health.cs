@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// Represents the health of an entity
-public class Health : MonoBehaviour
+public class Health
 {
     public double value;
 
