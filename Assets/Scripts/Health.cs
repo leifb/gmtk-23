@@ -20,11 +20,7 @@ public class Health : MonoBehaviour
 
     public void takeDamage(Damage damage) {
         this.value -= damage.total;
-
-        if(healthBar != null)
-        {
-            healthBar.setHealth((float)value);
-        }
+        healthBar.setHealth((float)value);
     }
 
     void Start()
