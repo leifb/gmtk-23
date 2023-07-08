@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
 
     public CombatStats combatStats = new CombatStats();
     public AttackStats attackStats = new AttackStats();
-    public Health health = new Health(100.0);
+    public double health = 100.0;
 
 
     // Start is called before the first frame update
@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     {
         // init test attack stats
         this.attackStats.blunt = 10.0;
+        this.GetComponent<Health>().SetMaxHealth(health);
     }
 
     // Update is called once per frame

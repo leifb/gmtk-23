@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class AbilityIndicator : MonoBehaviour
 {
 
     private Ability ability;
+    public Sprite activeAbility;
+    public Sprite nonActiveAbility;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +24,19 @@ public class AbilityIndicator : MonoBehaviour
     void Update()
     {
         if (this.ability.isActive) {
-            this.gameObject.SetActive(false);
+
+            if(this.gameObject.GetComponent<Image>().sprite != activeAbility){
+                this.gameObject.GetComponent<Image>().sprite = activeAbility;
+            }
+
             Debug.Log("Hot ability " + this.name);
+        } else {
+            if(this.gameObject.GetComponent<Image>().sprite != nonActiveAbility){
+                this.gameObject.GetComponent<Image>().sprite = nonActiveAbility;
+            }
+
         }
     }
+
+
 }

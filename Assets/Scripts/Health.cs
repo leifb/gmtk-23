@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// Represents the health of an entity
-public class Health
+public class Health : MonoBehaviour
 {
     public double value;
+    public double maxHealth;
+    public HealthBar healthBar;
 
-    public Health(double start) {
-        this.value = start;
+    public void SetMaxHealth(double health)
+    {
+        maxHealth = health;
     }
 
     public void takeDamage(Damage damage) {
         this.value -= damage.total;
+        healthBar.setHealth((float)value);
     }
+
+    void Start()
+    {
+        value = maxHealth;
+        healthBar.SetMaxHealth((float)maxHealth);
+    }
+
+
 }

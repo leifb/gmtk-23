@@ -11,7 +11,11 @@ public abstract class HoldToCastAbility : Ability
         get { return this._active; }
     }
 
-    public void trigger() {
+    public void triggerStart() {
         this._active = true;
+    }
+
+    public void triggerEnd() {
+        this._active = false;
     }
 }

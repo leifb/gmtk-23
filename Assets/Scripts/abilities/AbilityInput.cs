@@ -21,7 +21,10 @@ public class AbilityInput : MonoBehaviour
     {
         foreach (var pair in this.hotkeys) {
             if (Input.GetButtonDown(pair.Key)) {
-                pair.Value.trigger();
+                pair.Value.triggerStart();
+            }
+            if (Input.GetButtonUp(pair.Key)) {
+                pair.Value.triggerEnd();
             }
         }
     }
