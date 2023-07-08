@@ -10,4 +10,8 @@ public abstract class HoldToCastAbility : Ability
     public bool isActive {
         get { return this._active; }
     }
+
+    public void trigger() {
+        this._active = true;
+    }
 }

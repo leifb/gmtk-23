@@ -18,12 +18,16 @@ public class AbilityStore
     };
 
     private static Dictionary<string, Ability> abilities = abilitiesList.ToDictionary(
-        element => element.name,   
-        element => element
+        ability => ability.name,   
+        ability => ability
     );
 
     public static Ability get(string name) {
         return abilities[name];
+    }
+
+    public static List<string> names() {
+        return abilities.Keys.ToList();
     }
 
 }
