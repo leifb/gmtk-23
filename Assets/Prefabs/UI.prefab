@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3568800119857309943}
   - component: {fileID: 1527922952052149900}
   m_Layer: 5
-  m_Name: Test Ability B
+  m_Name: sleep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4583832512563632031}
   - component: {fileID: 7053978154104808029}
   m_Layer: 5
-  m_Name: Test Ability C
+  m_Name: stun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 7558211887260669956}
   - component: {fileID: 6717378571704675567}
   m_Layer: 5
-  m_Name: Test Ability F
+  m_Name: buff_willpower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 8722734256735986828}
   - component: {fileID: 3329908839752176608}
   m_Layer: 5
-  m_Name: Test Ability E
+  m_Name: buff_agility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,8 +401,9 @@ GameObject:
   - component: {fileID: 9194057805903324140}
   - component: {fileID: 7078049715456118296}
   - component: {fileID: 5859596483791562545}
+  - component: {fileID: 9213391799038673695}
   m_Layer: 5
-  m_Name: Test Ability A
+  m_Name: heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,6 +467,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9213391799038673695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385520792872459051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba29fd08ffaaf664af2dea975227d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4550195628758268097
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +491,7 @@ GameObject:
   - component: {fileID: 2059324241925943007}
   - component: {fileID: 3221911356830493705}
   m_Layer: 5
-  m_Name: Test Ability I
+  m_Name: buff_inteligence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,7 +567,7 @@ GameObject:
   - component: {fileID: 3725946778898996866}
   - component: {fileID: 7546756936991587887}
   m_Layer: 5
-  m_Name: Test Ability J
+  m_Name: test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,7 +643,7 @@ GameObject:
   - component: {fileID: 1687131547264872305}
   - component: {fileID: 8849662878036693737}
   m_Layer: 5
-  m_Name: Test Ability G
+  m_Name: buff_strength
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,7 +823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d3a51828cf7dfbaaeef18e5a0fbf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 764773547550913918, guid: 2a4f3be8616fa1c89a49fae434f8166a, type: 3}
   abilitesParent: {fileID: 775859791691497968}
 --- !u!1 &7074631446373160756
 GameObject:
@@ -824,7 +836,7 @@ GameObject:
   - component: {fileID: 5150746414701905855}
   - component: {fileID: 1994235323821757376}
   m_Layer: 5
-  m_Name: Test Ability H
+  m_Name: buff_dexterity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -900,7 +912,7 @@ GameObject:
   - component: {fileID: 116007310023659397}
   - component: {fileID: 976266478450147524}
   m_Layer: 5
-  m_Name: Test Ability D
+  m_Name: buff_constitution
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
