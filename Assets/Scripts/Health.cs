@@ -12,11 +12,19 @@ public class Health : MonoBehaviour
     public void SetMaxHealth(double health)
     {
         maxHealth = health;
+        if(healthBar!= null)
+        {
+            healthBar.SetMaxHealth((float)maxHealth);
+        }
     }
 
     public void takeDamage(Damage damage) {
         this.value -= damage.total;
-        healthBar.setHealth((float)value);
+
+        if(healthBar != null)
+        {
+            healthBar.setHealth((float)value);
+        }
     }
 
     void Start()
