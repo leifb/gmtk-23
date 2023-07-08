@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
@@ -9,30 +10,18 @@ public class EnemyController : MonoBehaviour
     public GameObject basicEnemy;
     public GameObject armorEnemy;
     public GameObject magicEnemy;
+    public float spawnPadding = 2f;
     public GameObject hero;
     public Transform spawnParent;
-    private float nextSpawn = 2f;
+    private float nextSpawn = 1f;
     private bool spawnHorde = true;
-    private Vector2Int spawnArea;
-    public UnityEngine.Tilemaps.Tilemap background;
+    public Tilemap background;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < background.size.x; i++)
-        {
-            for (int j = 0; j < background.size.y; j++)
-            {
-                if (Mathf.Abs(spawnArea.x) > Mathf.Abs(background.CellToWorld(new Vector3Int(i, j, 0)).x))
-                {
-                    spawnArea.x = Mathf.FloorToInt(background.CellToWorld(new Vector3Int(i, j, 0)).x);
-                }
-                if (Mathf.Abs(spawnArea.y) < Mathf.Abs(background.CellToWorld(new Vector3Int(i, j, 0)).y))
-                {
-                    spawnArea.y = Mathf.FloorToInt(background.CellToWorld(new Vector3Int(i, j, 0)).y);
-                }
-            }
-        }
+
     }
 
     // Update is called once per frame
@@ -41,7 +30,7 @@ public class EnemyController : MonoBehaviour
         if (Time.time >= nextSpawn)
         {
             // Change the next update (current second + random value between 0.5s and 2s)
-            nextSpawn = (Time.time) + (Random.Range(0.5f, 2));
+            nextSpawn = (Time.time) + (Random.Range(0.5f, 1));
 
             int randomValue = Random.Range(0, 3);
 
@@ -65,12 +54,20 @@ public class EnemyController : MonoBehaviour
     void SpawnEnemy(GameObject enemy)
     {
         CircleCollider2D spawnCircleCollider = hero.GetComponent<CircleCollider2D>();
-        Vector3Int pos = new Vector3Int(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
-        UnityEngine.Tilemaps.TileBase tile = background.GetTile(pos);
 
-        while (spawnCircleCollider.OverlapPoint(new Vector2(pos.x, pos.y)) || tile == null){
-            pos = new Vector3Int(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
-            tile = background.GetTile(pos);
+        BoundsInt bounds = background.cellBounds;
+        Vector3Int minCell = bounds.min;
+        Vector3Int maxCell = bounds.max;
+
+        Vector3 minWorldPos = background.CellToWorld(minCell);
+        Vector3 maxWorldPos = background.CellToWorld(maxCell);
+        minWorldPos += new Vector3(spawnPadding,spawnPadding,0);
+        maxWorldPos -= new Vector3(spawnPadding,spawnPadding,0);
+
+        Vector3 pos = new Vector3(Random.Range(minWorldPos.x, maxWorldPos.x), Random.Range(minWorldPos.y, maxWorldPos.y), 0);
+
+        while (spawnCircleCollider.OverlapPoint(new Vector2(pos.x, pos.y)) || background.WorldToCell(pos) == null){
+            pos = new Vector3(Random.Range(minWorldPos.x, maxWorldPos.x), Random.Range(minWorldPos.y, maxWorldPos.y), 0);
         }
 
         if (!spawnHorde)
@@ -81,17 +78,15 @@ public class EnemyController : MonoBehaviour
         {
             for (int i = 0; i < Random.Range(3, 7); i++)
             {
-                Instantiate(enemy, PositionNearby(pos), Quaternion.identity, spawnParent);
+                Instantiate(enemy, PositionNearby(pos, minWorldPos, maxWorldPos), Quaternion.identity, spawnParent);
             }
         }
-
-
     }
 
-    Vector3 PositionNearby(Vector3 pos)
+    Vector3 PositionNearby(Vector3 pos, Vector3 minWorldPos, Vector3 maxWorldPos)
     {
-        pos.x = Mathf.Clamp((pos.x += Random.Range(5, 10)), -spawnArea.x, spawnArea.x);
-        pos.y = Mathf.Clamp((pos.y += Random.Range(5, 10)), -spawnArea.y, spawnArea.y);
+        pos.x = Mathf.Clamp((pos.x += Random.Range(5, 10)), minWorldPos.x, maxWorldPos.x);
+        pos.y = Mathf.Clamp((pos.y += Random.Range(5, 10)), minWorldPos.y, maxWorldPos.y);
         return pos;
     }
 }
