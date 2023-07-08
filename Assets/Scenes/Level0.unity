@@ -373,6 +373,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: sprite
       objectReference: {fileID: 0}
+    - target: {fileID: 8507447787540575203, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 1345306394}
+    - target: {fileID: 8507447787540575203, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
+      propertyPath: enemiesParent
+      value: 
+      objectReference: {fileID: 1228953108}
     - target: {fileID: 8554857760479275924, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
       propertyPath: sprite
       value: 
@@ -460,6 +468,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1345306394 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9154428734094594099, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
+  m_PrefabInstance: {fileID: 816787121}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1848522489 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6547615276887009832, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
