@@ -19,6 +19,9 @@ public class AbilityIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (this.ability.isActive) {
+            this.gameObject.SetActive(false);
+            Debug.Log("Hot ability " + this.name);
+        }
     }
 }

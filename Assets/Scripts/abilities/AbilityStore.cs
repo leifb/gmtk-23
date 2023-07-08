@@ -15,6 +15,7 @@ public class AbilityStore
         new BuffStrength(),
         new BuffDexterity(),
         new BuffInteligence(),
+        new Test(),
     };
 
     private static Dictionary<string, Ability> abilities = abilitiesList.ToDictionary(

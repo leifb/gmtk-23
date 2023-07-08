@@ -5,6 +5,6 @@ using UnityEngine;
 public class BuffAgility : HoldToCastAbility
 {
     override public string name {
-        get { return "bugg_agility"; }
+        get { return "buff_agility"; }
     }
 }
