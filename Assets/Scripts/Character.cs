@@ -5,12 +5,11 @@ using UnityEngine;
 // This is the main scipt that is used for the "owner" of the player.
 public class Character : MonoBehaviour
 {
-    // Set-up in editor
-    public Animator sprite;
 
     public CombatStats combatStats = new CombatStats();
     public AttackStats attackStats = new AttackStats();
     public Health health = new Health(100.0);
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +21,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    void Turn(Vector2 direction) {
-        
-    }
+    
 }
