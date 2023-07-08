@@ -4298,7 +4298,7 @@ MonoBehaviour:
   magicEnemy: {fileID: 253315443853858791, guid: f1a634ceba868844fa2407c82cb47848, type: 3}
   hero: {fileID: 1596191218555649135, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
   spawnParent: {fileID: 1827968886}
-  background: {fileID: 0}
+  background: {fileID: 487154382}
 --- !u!1 &487154379
 GameObject:
   m_ObjectHideFlags: 0
