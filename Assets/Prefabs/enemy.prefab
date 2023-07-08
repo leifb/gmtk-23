@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8835415799533005611}
   - component: {fileID: 1139967006422060692}
   - component: {fileID: 5876987276286954612}
+  - component: {fileID: -2886230517342918108}
+  - component: {fileID: 6878582564780923434}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -125,3 +127,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   reach: 1.5
+--- !u!114 &-2886230517342918108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7362684821768241397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d818464e19425a5799e6cf6e9ac85f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blunt: 0
+  piercing: 5
+  magic: 0
+--- !u!114 &6878582564780923434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7362684821768241397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4daeb0f015cce6e909cb4776fd30b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1
+  dexterity: 1
+  intelligence: 1
+  constitution: 1
+  agility: 1
+  willpower: 1

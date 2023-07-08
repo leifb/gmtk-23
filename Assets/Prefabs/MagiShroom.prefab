@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 9068884802936473052}
   - component: {fileID: 4436146547912999582}
   - component: {fileID: -1562859830308798097}
+  - component: {fileID: 3296762274780403558}
+  - component: {fileID: 5478884202085238398}
   m_Layer: 0
   m_Name: MagiShroom
   m_TagString: Untagged
@@ -125,3 +127,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   reach: 1.5
+--- !u!114 &3296762274780403558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253315443853858791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d818464e19425a5799e6cf6e9ac85f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blunt: 0
+  piercing: 0
+  magic: 5
+--- !u!114 &5478884202085238398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253315443853858791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4daeb0f015cce6e909cb4776fd30b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1
+  dexterity: 1
+  intelligence: 1
+  constitution: 1
+  agility: 1
+  willpower: 1

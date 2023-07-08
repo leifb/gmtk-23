@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 7344469641850709182}
   - component: {fileID: 6576554522587201114}
   - component: {fileID: 523261868735002791}
+  - component: {fileID: 2388059718224513382}
+  - component: {fileID: 1332456725406655961}
+  - component: {fileID: 389952387141087315}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -49,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4cc88749a61c7ae29868801991cbfd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
 --- !u!114 &3651701070254057459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +126,54 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 1}
   serializedVersion: 2
   m_Radius: 7
+--- !u!114 &2388059718224513382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596191218555649135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbb015ba44ae4caa982e859422d5b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 0
+  maxHealth: 0
+  healthBar: {fileID: 0}
+--- !u!114 &1332456725406655961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596191218555649135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d818464e19425a5799e6cf6e9ac85f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blunt: 10
+  piercing: 0
+  magic: 0
+--- !u!114 &389952387141087315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596191218555649135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4daeb0f015cce6e909cb4776fd30b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1
+  dexterity: 1
+  intelligence: 1
+  constitution: 1
+  agility: 1
+  willpower: 1
 --- !u!1 &6547615276887009832
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +248,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Sprite: {fileID: 467294733, guid: 4d11529a28a4a3020a6295a085079a4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
