@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 8554857760479275924}
   - component: {fileID: 3651701070254057459}
   - component: {fileID: 7344469641850709182}
-  - component: {fileID: 6576554522587201114}
   - component: {fileID: 523261868735002791}
   - component: {fileID: 2388059718224513382}
   - component: {fileID: 1332456725406655961}
   - component: {fileID: 389952387141087315}
+  - component: {fileID: 6720941457099319059}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -38,7 +38,7 @@ Transform:
   m_Children:
   - {fileID: 4491113129391587795}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8554857760479275924
 MonoBehaviour:
@@ -78,19 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9194bce98a39abe6bfa748f2ecd7626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6576554522587201114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596191218555649135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8caf32ce38a1c1718068351349e8bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!58 &523261868735002791
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -174,6 +161,21 @@ MonoBehaviour:
   constitution: 1
   agility: 1
   willpower: 1
+--- !u!114 &6720941457099319059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596191218555649135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6655e802d3fbd29e879d25487aa9f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  reach: 3
+  attackTime: 0.2
 --- !u!1 &6547615276887009832
 GameObject:
   m_ObjectHideFlags: 0
