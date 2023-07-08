@@ -85,8 +85,15 @@ public class CloseCombatMovement : MonoBehaviour
     }
 
     private void UpdateAttackTarget() {
-        if (this.TickTimeout())
-            return;
+        if (this.target.isValid()) {
+            Transform target = this.target.get();
+            Damage damage = Damage.fromInteraction(
+                this.GetComponent<AttackStats>(),
+                this.GetComponent<CombatStats>(),
+                this.target.GetComponent<CombatStats>()
+            );
+            target.GetComponent<Health>().takeDamage(damage);
+        }
 
         this.QueueIdle();
     }
