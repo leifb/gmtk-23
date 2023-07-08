@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 8929600315350247309}
   - component: {fileID: 8600974560469369668}
   - component: {fileID: 5443264915437919247}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmorShroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

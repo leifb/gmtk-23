@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5478884202085238398}
   - component: {fileID: -4228476539818147039}
   - component: {fileID: 3672635244678591745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagiShroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
