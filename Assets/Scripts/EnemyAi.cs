@@ -21,8 +21,13 @@ public class EnemyAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float distanceToTarget = Vector3.Distance(this.transform.position, this.target.transform.position);
+        if (distanceToTarget < 1.5) {
+            return;
+        }
+
         float step = (float) speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        this.transform.position = Vector3.MoveTowards(this.transform.position, this.target.position, step);
     }
 
     

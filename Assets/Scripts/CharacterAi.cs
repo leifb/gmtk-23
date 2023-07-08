@@ -20,27 +20,45 @@ public class CharacterAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.currentTarget == null) {
-            this.currentTarget = this.SelectTarget();
-
-            if (this.currentTarget == null) {
-                return;
-            }
-
-            Debug.Log("new target" + this.currentTarget.ToString());
+        if (!this.UpdateTarget()) {
+            return;
         }
-
-        this.MoveToTarget(this.currentTarget);
-
+        
+        this.Move(this.currentTarget);
     }
 
-    void MoveToTarget(GameObject target)
+    /// Movement of the AI
+    void Move(GameObject target)
     {
+        float distanceToTarget = Vector3.Distance(this.character.position, target.transform.position);
+        if (distanceToTarget < 1.5) {
+            return;
+        }
+
         float step = (float) speed * Time.deltaTime;
         this.character.position = Vector3.MoveTowards(this.character.position, target.transform.position, step);
     }
 
-    GameObject SelectTarget() {
+    /// Checks if a new target is needed and selects one if necessary
+    /// returns whether a valid target is set.
+    private bool UpdateTarget() {
+        // Check if target "died"
+        if (this.currentTarget != null && !this.currentTarget.activeSelf) {
+            this.currentTarget = null;
+        }
+
+        // Return true, if there is a valid target
+        if (this.currentTarget != null) {
+            return true;
+        }
+
+        // Select new target
+        this.currentTarget = this.SelectTarget();
+
+        return this.currentTarget != null;
+    }
+
+    private GameObject SelectTarget() {
         int amountEnemies = this.enemiesParent.childCount;
 
         if (amountEnemies < 1) {
