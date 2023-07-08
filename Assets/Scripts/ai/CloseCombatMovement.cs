@@ -87,22 +87,30 @@ public class CloseCombatMovement : MonoBehaviour
     }
 
     private void UpdateAttackTarget() {
-        // Deal actual damage
-        if (this.target.isValid()) {
-            Transform target = this.target.get();
-            Damage damage = Damage.fromInteraction(
-                this.GetComponent<AttackStats>(),
-                this.GetComponent<CombatStats>(),
-                this.target.GetComponent<CombatStats>()
-            );
-            target.GetComponent<Health>().takeDamage(damage);
+        if (!this.target.isValid()) {
+            this.currentAction = "searchForTarget";
+            return;
         }
 
+        // Deal actual damage
+        
+        Transform target = this.target.get();
+        Damage damage = Damage.fromInteraction(
+            this.GetComponent<AttackStats>(),
+            this.GetComponent<CombatStats>(),
+            this.target.GetComponent<CombatStats>()
+        );
+        target.GetComponent<Health>().takeDamage(damage);
+        
+        this.moveIdeDirection = RandomDirection();
         this.timeout = this.attackTime;
         this.currentAction = "duringAttack";
     }
 
     private void UpdateDuringAttack() {
+        float step = (float) (this.speed * 0.1f) * Time.deltaTime;
+        this.transform.position += this.moveIdeDirection * step;
+
         if (this.TickTimeout())
             return;
 
