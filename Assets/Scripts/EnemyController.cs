@@ -14,15 +14,22 @@ public class EnemyController : MonoBehaviour
     private float nextSpawn = 2f;
     private bool spawnHorde = true;
     private float spawnDistanceRadius = 10f;
-    private Vector2 spawnArea;
+    private Vector2Int spawnArea;
     public UnityEngine.Tilemaps.Tilemap background;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        spawnArea.x = background.transform.position.x + (background.size.x / 2f) - 1f;
-        spawnArea.y = background.transform.position.y + (background.size.y / 2f) - 1f;
+        for (int i = 0; i < background.size.x; i++){
+            for (int j = 0; j < background.size.y; j++){
+                if (Mathf.Abs(spawnArea.x) > Mathf.Abs(background.CellToWorld(new Vector3Int(i, j, 0)).x)){
+                    spawnArea.x = Mathf.FloorToInt(background.CellToWorld(new Vector3Int(i, j, 0)).x);
+                }
+                if (Mathf.Abs(spawnArea.y) < Mathf.Abs(background.CellToWorld(new Vector3Int(i, j, 0)).y)){
+                    spawnArea.y = Mathf.FloorToInt(background.CellToWorld(new Vector3Int(i, j, 0)).y);
+                }
+            }
+        }
     }
 
     // Update is called once per frame
@@ -54,7 +61,9 @@ public class EnemyController : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-        Vector3 pos = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
+        Vector3Int pos = new Vector3Int(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
+        
+        UnityEngine.Tilemaps.TileBase tile = background.GetTile(pos);
 
         while (pos.x == 0 && hero.transform.position.x - spawnDistanceRadius <= pos.x && hero.transform.position.x + spawnDistanceRadius >= pos.x)
         {
