@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// A singe instance of damage dealt
-public class Damage : MonoBehaviour
+public class Damage
 {
     
     public readonly double total;

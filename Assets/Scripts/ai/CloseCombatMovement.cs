@@ -7,6 +7,7 @@ public class CloseCombatMovement : MonoBehaviour
 {
     public double speed = 5.0;
     public double reach = 1.5;
+    public float attackTime = 0.2f;
 
     private string currentAction = "idle";
 
@@ -25,6 +26,7 @@ public class CloseCombatMovement : MonoBehaviour
         this.movesets["searchForTarget"] = this.UpdateSearchForTarget;
         this.movesets["moveToTarget"] = this.UpdateMoveToTarget;
         this.movesets["attackTarget"] = this.UpdateAttackTarget;
+        this.movesets["duringAttack"] = this.UpdateDuringAttack;
         this.QueueIdle();
     }
 
@@ -85,6 +87,7 @@ public class CloseCombatMovement : MonoBehaviour
     }
 
     private void UpdateAttackTarget() {
+        // Deal actual damage
         if (this.target.isValid()) {
             Transform target = this.target.get();
             Damage damage = Damage.fromInteraction(
@@ -95,7 +98,15 @@ public class CloseCombatMovement : MonoBehaviour
             target.GetComponent<Health>().takeDamage(damage);
         }
 
-        this.QueueIdle();
+        this.timeout = this.attackTime;
+        this.currentAction = "duringAttack";
+    }
+
+    private void UpdateDuringAttack() {
+        if (this.TickTimeout())
+            return;
+
+        this.currentAction = "searchForTarget";
     }
 
     private void QueueIdle() {
