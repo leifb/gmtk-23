@@ -9,19 +9,20 @@ public class EnemyController : MonoBehaviour
     public GameObject basicEnemy;
     public GameObject armorEnemy;
     public GameObject magicEnemy;
-    public SpriteRenderer background;
     public GameObject hero;
     public Transform spawnParent;
     private float nextSpawn = 2f;
     private bool spawnHorde = true;
     private float spawnDistanceRadius = 10f;
     private Vector2 spawnArea;
+    public UnityEngine.Tilemaps.Tilemap background;
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnArea.x = background.transform.position.x + (background.bounds.size.x / 2f) - 1f;
-        spawnArea.y = background.transform.position.y + (background.bounds.size.y / 2f) - 1f;
+        
+        spawnArea.x = background.transform.position.x + (background.size.x / 2f) - 1f;
+        spawnArea.y = background.transform.position.y + (background.size.y / 2f) - 1f;
     }
 
     // Update is called once per frame
