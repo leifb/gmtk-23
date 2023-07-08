@@ -4296,8 +4296,9 @@ MonoBehaviour:
   basicEnemy: {fileID: 7362684821768241397, guid: b44fc2d5fbc0f3c4e8dd53c8977c3ca1, type: 3}
   armorEnemy: {fileID: 4613258710832679197, guid: 8e67417f97bc2004ba3ed4d1e687d503, type: 3}
   magicEnemy: {fileID: 253315443853858791, guid: f1a634ceba868844fa2407c82cb47848, type: 3}
-  background: {fileID: 0}
   hero: {fileID: 1596191218555649135, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
+  spawnParent: {fileID: 1827968886}
+  background: {fileID: 0}
 --- !u!1 &487154379
 GameObject:
   m_ObjectHideFlags: 0
@@ -25101,7 +25102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5a0a41acb4439b99f09fbd13e64fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1345306394}
+  target: {fileID: 816787122}
+  speed: 5
 --- !u!1001 &816787121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25129,11 +25131,11 @@ PrefabInstance:
     - target: {fileID: 8507447787540575203, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
       propertyPath: character
       value: 
-      objectReference: {fileID: 1345306394}
+      objectReference: {fileID: 816787122}
     - target: {fileID: 8507447787540575203, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
       propertyPath: enemiesParent
       value: 
-      objectReference: {fileID: 1228953108}
+      objectReference: {fileID: 1827968886}
     - target: {fileID: 8554857760479275924, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
       propertyPath: sprite
       value: 
@@ -25190,6 +25192,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1848522493}
   m_SourcePrefab: {fileID: 100100000, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
+--- !u!4 &816787122 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9154428734094594099, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
+  m_PrefabInstance: {fileID: 816787121}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1298881968
 GameObject:
   m_ObjectHideFlags: 0
@@ -26821,6 +26828,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1827968885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1827968886}
+  m_Layer: 0
+  m_Name: enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1827968886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827968885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1848522489 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6547615276887009832, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
