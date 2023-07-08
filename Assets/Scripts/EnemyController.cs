@@ -64,37 +64,27 @@ public class EnemyController : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-        EnemyAi enemyAi = enemy.GetComponent<EnemyAi>();
-        CircleCollider2D spawnCircleCollider;
-        if (enemyAi != null)
+        CircleCollider2D spawnCircleCollider = hero.GetComponent<CircleCollider2D>();
+        Vector3Int pos = new Vector3Int(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
+        UnityEngine.Tilemaps.TileBase tile = background.GetTile(pos);
+
+        while (spawnCircleCollider.OverlapPoint(new Vector2(pos.x, pos.y)) || tile == null){
+            pos = new Vector3Int(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
+            tile = background.GetTile(pos);
+        }
+
+        if (!spawnHorde)
         {
-            spawnCircleCollider = enemyAi.GetSpawnCircleCollider();
-
-            Vector3Int pos = new Vector3Int(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
-
-            UnityEngine.Tilemaps.TileBase tile = background.GetTile(pos);
-
-            while (pos.x == 0 || tile == null || spawnCircleCollider.IsTouching(hero.GetComponent<Collider2D>()))
+            Instantiate(enemy, pos, Quaternion.identity, spawnParent);
+        }
+        else
+        {
+            for (int i = 0; i < Random.Range(3, 7); i++)
             {
-                pos.x = Random.Range(-spawnArea.x, spawnArea.x);
-            }
-            while (pos.y == 0 || tile == null || spawnCircleCollider.IsTouching(hero.GetComponent<Collider2D>()))
-            {
-                pos.y = Random.Range(-spawnArea.y, spawnArea.y);
-            }
-
-            if (!spawnHorde)
-            {
-                Instantiate(enemy, pos, Quaternion.identity, spawnParent);
-            }
-            else
-            {
-                for (int i = 0; i < Random.Range(3, 7); i++)
-                {
-                    Instantiate(enemy, PositionNearby(pos), Quaternion.identity, spawnParent);
-                }
+                Instantiate(enemy, PositionNearby(pos), Quaternion.identity, spawnParent);
             }
         }
+
 
     }
 
