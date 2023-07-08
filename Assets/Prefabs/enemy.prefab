@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   reach: 1.5
+  attackTime: 0.2
 --- !u!114 &-2886230517342918108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,10 +337,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 1
-  dexterity: 1
+  dexterity: 4
   intelligence: 1
   constitution: 1
-  agility: 1
+  agility: 6
   willpower: 1
 --- !u!114 &-1609674353654124535
 MonoBehaviour:

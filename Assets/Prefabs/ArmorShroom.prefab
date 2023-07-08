@@ -309,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   reach: 1.5
+  attackTime: 0.2
 --- !u!114 &4360719038317540280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,10 +337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4daeb0f015cce6e909cb4776fd30b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 1
+  strength: 3
   dexterity: 1
   intelligence: 1
-  constitution: 1
+  constitution: 10
   agility: 1
   willpower: 1
 --- !u!114 &8600974560469369668
