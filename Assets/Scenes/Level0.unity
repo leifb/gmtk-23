@@ -25462,6 +25462,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 372763865}
+    - target: {fileID: 2388059718224513382, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3651701070254057459, guid: 9d4416791df66ed1a92321df3583a3af, type: 3}
       propertyPath: enemiesParent
       value: 
