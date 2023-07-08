@@ -12,14 +12,14 @@ public class DefaultMovement : MovementLogic
 
 
     /// Movement of the AI
-    public void Move(Transform actor, Transform target, float deltaTime)
+    public void Move(Transform actor, Transform target)
     {
         float distanceToTarget = Vector3.Distance(actor.position, target.position);
         if (distanceToTarget < 1.5) {
             return;
         }
 
-        float step = (float) speed * Time.deltaTime;
+        float step = (float) this.speed * Time.deltaTime;
         actor.position = Vector3.MoveTowards(actor.position, target.position, step);
     }
 }

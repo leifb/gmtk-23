@@ -7,7 +7,7 @@ public interface MovementLogic
 
 
     /// Movement of the AI
-    void Move(Transform actor, Transform target, float deltaTime);
+    void Move(Transform actor, Transform target);
 
   
 }
