@@ -9,25 +9,19 @@ public class EnemyAi : MonoBehaviour
 
     private Transform target;
 
-    
+    private MovementLogic movement;
 
     // Start is called before the first frame update
     void Start()
     {
         this.target = GameObject.Find("character").transform;
-        
+        this.movement = new DefaultMovement(this.speed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distanceToTarget = Vector3.Distance(this.transform.position, this.target.transform.position);
-        if (distanceToTarget < 1.5) {
-            return;
-        }
-
-        float step = (float) speed * Time.deltaTime;
-        this.transform.position = Vector3.MoveTowards(this.transform.position, this.target.position, step);
+        this.movement.Move(this.transform, this.target);
     }
 
     

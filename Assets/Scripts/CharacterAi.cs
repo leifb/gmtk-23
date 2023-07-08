@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAi : MonoBehaviour
@@ -9,12 +7,13 @@ public class CharacterAi : MonoBehaviour
     public Transform character;
     private GameObject currentTarget;
 
+    private MovementLogic movement;
     public double speed = 5.0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.movement = new DefaultMovement(this.speed);
     }
 
     // Update is called once per frame
@@ -24,20 +23,9 @@ public class CharacterAi : MonoBehaviour
             return;
         }
         
-        this.Move(this.currentTarget);
+        this.movement.Move(this.character.transform, this.currentTarget.transform);
     }
 
-    /// Movement of the AI
-    void Move(GameObject target)
-    {
-        float distanceToTarget = Vector3.Distance(this.character.position, target.transform.position);
-        if (distanceToTarget < 1.5) {
-            return;
-        }
-
-        float step = (float) speed * Time.deltaTime;
-        this.character.position = Vector3.MoveTowards(this.character.position, target.transform.position, step);
-    }
 
     /// Checks if a new target is needed and selects one if necessary
     /// returns whether a valid target is set.
@@ -66,7 +54,6 @@ public class CharacterAi : MonoBehaviour
         }
 
         int selectedEnemy = Random.Range(0, amountEnemies);
-        Debug.Log("Selected enemy" + selectedEnemy.ToString());
         return this.enemiesParent.GetChild(selectedEnemy).gameObject;
     }
 }
