@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultMovement : MovementLogic
+public class DefaultMovement : MonoBehaviour
 {
-    private double speed = 5.0;
+    public double speed = 5.0;
 
-    public DefaultMovement(double speed) {
-        this.speed = speed;
+    private MovementTarget target;
+
+    public void Start() {
+        this.target = this.GetComponent<MovementTarget>();
     }
 
-
-    /// Movement of the AI
-    public void Move(Transform actor, Transform target)
+    public void Update()
     {
-        float distanceToTarget = Vector3.Distance(actor.position, target.position);
+        if (!this.target.isValid())
+            return;
+        
+        float distanceToTarget = Vector3.Distance(this.transform.position, this.target.get().position);
         if (distanceToTarget < 1.5) {
             return;
         }
 
         float step = (float) this.speed * Time.deltaTime;
-        actor.position = Vector3.MoveTowards(actor.position, target.position, step);
+        this.transform.position = Vector3.MoveTowards(this.transform.position, this.target.get().position, step);
     }
 }

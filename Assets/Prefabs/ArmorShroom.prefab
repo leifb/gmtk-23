@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3546101528453871491}
   - component: {fileID: 1669864638412879060}
   - component: {fileID: 4467021465631349086}
+  - component: {fileID: 1337170036123341099}
+  - component: {fileID: 2494495398749681956}
   m_Layer: 0
   m_Name: ArmorShroom
   m_TagString: Untagged
@@ -97,4 +99,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afca07d16356d47b79251d073bdfa0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+--- !u!114 &1337170036123341099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613258710832679197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9194bce98a39abe6bfa748f2ecd7626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2494495398749681956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613258710832679197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8caf32ce38a1c1718068351349e8bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
