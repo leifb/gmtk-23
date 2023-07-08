@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     public GameObject magicEnemy;
     public SpriteRenderer background;
     public GameObject hero;
+    public Transform spawnParent;
     private float nextSpawn = 2f;
     private bool spawnHorde = true;
     private float spawnDistanceRadius = 10f;
@@ -71,7 +72,7 @@ public class EnemyController : MonoBehaviour
         {
             for (int i = 0; i < Random.Range(3, 7); i++)
             {
-                Instantiate(enemy, PositionNearby(pos), Quaternion.identity);
+                Instantiate(enemy, PositionNearby(pos), Quaternion.identity, spawnParent);
             }
         }
 
