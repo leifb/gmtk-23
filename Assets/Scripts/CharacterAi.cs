@@ -41,4 +41,9 @@ public class CharacterAi : MonoBehaviour
         int selectedEnemy = Random.Range(0, amountEnemies);
         return this.enemiesParent.GetChild(selectedEnemy).transform;
     }
+
+    public void Sleep(double duration)
+    {
+        //TODO freeze character movement
+    }
 }

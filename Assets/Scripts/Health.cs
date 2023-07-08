@@ -23,6 +23,11 @@ public class Health : MonoBehaviour
         healthBar.setHealth((float)value);
     }
 
+    public void heal(double amount) {
+        this.value += amount;
+        healthBar.setHealth((float)value);
+    }
+
     void Start()
     {
         value = maxHealth;

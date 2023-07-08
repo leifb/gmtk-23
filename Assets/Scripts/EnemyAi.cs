@@ -17,4 +17,9 @@ public class EnemyAi : MonoBehaviour
     {
 
     }
+
+    public void Stun(double duration)
+    {
+        //TODO implement stun for duration
+    }
 }

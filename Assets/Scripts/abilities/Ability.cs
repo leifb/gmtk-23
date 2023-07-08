@@ -7,6 +7,8 @@ public interface Ability
     string name { get; }
     bool isActive { get; }
 
+    int value { get; }
+
     void triggerStart();
 
     void triggerEnd();
