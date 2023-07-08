@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3681303247540477422}
   - component: {fileID: 3343235725905909340}
   - component: {fileID: 9068884802936473052}
-  - component: {fileID: 985251235776507009}
   - component: {fileID: 4436146547912999582}
+  - component: {fileID: -1562859830308798097}
   m_Layer: 0
   m_Name: MagiShroom
   m_TagString: Untagged
@@ -99,19 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afca07d16356d47b79251d073bdfa0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &985251235776507009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253315443853858791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8caf32ce38a1c1718068351349e8bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!114 &4436146547912999582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +111,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9194bce98a39abe6bfa748f2ecd7626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1562859830308798097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253315443853858791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c055097a51cf18c5b93c706e153d264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  reach: 1.5
