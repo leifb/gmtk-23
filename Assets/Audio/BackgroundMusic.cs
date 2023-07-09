@@ -4,23 +4,7 @@ using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour
 {
-    private static BackgroundMusic instance = null;
     AudioSource audioSource;
-
-    private void Awake()
-    {
-        if (instance == null)
-        { 
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            return;
-        }
-        if (instance == this)
-            return; 
-        Destroy(gameObject);
-    }
-    
-
 
     // Start is called before the first frame update
     void Start()
