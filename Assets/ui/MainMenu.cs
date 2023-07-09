@@ -62,11 +62,10 @@ public class MainUi : MonoBehaviour
             else if (this._gameState == GameState.PAUSED) {
                 this.ResumeGame();
             }
-            else {
-
+            else if (this._gameState == GameState.DEATH)  {
+                this.StartGame();
             }
         }
-        
     }
 
     public void Quit() {
