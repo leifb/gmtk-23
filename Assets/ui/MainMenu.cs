@@ -43,6 +43,7 @@ public class MainUi : MonoBehaviour
     
     void Start()
     {
+        this.HideAll();
         if (this._gameState == GameState.MAIN_MENU) {
             this.CanvasMainMenu.SetActive(true);
         }
