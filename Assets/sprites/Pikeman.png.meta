@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a0fc354ecec7a3db58f47d6b79aab009
+guid: cce24e2a2f6b8d43e9f263aa713f3175
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warrior_0
+      name: Pikeman_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4c4f169a31e84b4797b6112e20cd69b
-      internalID: 417904356
+      spriteID: 1e0b5b53fa55d62b9b27c787add19ded
+      internalID: 1598126301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_1
+      name: Pikeman_1
       rect:
         serializedVersion: 2
         x: 128
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87e9c75dcd4f139d2a84d0d4d1d96ba9
-      internalID: 423262531
+      spriteID: 85c837644196b6e9a9929150e63d8331
+      internalID: 1840028352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_2
+      name: Pikeman_2
       rect:
         serializedVersion: 2
         x: 256
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6f580ba4c9c9cdf782c2aadb32f2d4f
-      internalID: 640455853
+      spriteID: d1c83f9ceff751c0f90de80c388c8f51
+      internalID: 1172202231
       vertices: []
       indices: 
       edges: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Warrior_0: 417904356
-      Warrior_1: 423262531
-      Warrior_2: 640455853
+      Pikeman_0: 1598126301
+      Pikeman_1: 1840028352
+      Pikeman_2: 1172202231
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
