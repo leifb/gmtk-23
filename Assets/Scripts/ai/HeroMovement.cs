@@ -13,7 +13,7 @@ public class HeroMovement : MonoBehaviour
     private string currentAction = "idle";
 
     private MovementTarget target;
-    private Vector2 lastDirection = Vector2.zero;
+    private MovementDirection direciton;
 
     private Dictionary<string, System.Action> movesets = new Dictionary<string, System.Action>();
 
@@ -40,6 +40,7 @@ public class HeroMovement : MonoBehaviour
 
     public void Start() {
         this.target = this.GetComponent<MovementTarget>();
+        this.direciton = this.GetComponent<MovementDirection>();
         this.movesets["idle"] = this.UpdateIdle;
         this.movesets["attackTarget"] = this.UpdateAttackTarget;
         this.movesets["duringAttack"] = this.UpdateDuringAttack;
@@ -49,10 +50,10 @@ public class HeroMovement : MonoBehaviour
     public void Update()
     {
         // Always scan for enemies and move
-        Vector2 newDirection = SelectFreeDirection();
-        this.lastDirection = Vector2.Lerp(this.lastDirection, newDirection, Time.deltaTime * 3f);
+        var newDirection = SelectFreeDirection();
+        var lerpedDirection = this.direciton.Lerp(newDirection, Time.deltaTime * 3f); 
         float step = (float) (this.speed) * Time.deltaTime;
-        this.transform.position += (Vector3) this.lastDirection * step;
+        this.transform.position += (Vector3) lerpedDirection * step;
 
         // Attack or whatever
         this.movesets[this.currentAction]();
@@ -133,8 +134,8 @@ public class HeroMovement : MonoBehaviour
 
         // No enemy in sight > go wherever
         if (colliderClose == null) {
-            this.lastDirection = this.lastDirection + Random.insideUnitCircle * 0.05f;
-            return this.lastDirection;
+            var directionWithRandom = this.direciton.get() + Random.insideUnitCircle * 0.1f;
+            return Vector2.ClampMagnitude(directionWithRandom, 1f);
         }
 
         // If no enemies too close, move to closest
@@ -150,19 +151,19 @@ public class HeroMovement : MonoBehaviour
                 // Get average of free directions
                 var averageOfFree = free.Aggregate(Vector2.zero, (l ,r) => l + r.Key);
                 // Add timny amount of last direction, because the average is sometimes zero
-                var averageWithBias = averageOfFree + (this.lastDirection * 0.2f);
+                var averageWithBias = averageOfFree + (this.direciton.get() * 0.2f);
                 // Return this normalized
                 return averageWithBias.normalized;
             }
 
             // Otherwise choose the free drection closes to current direction
-            var distances = free.Select(f => (Vector2.Distance(f.Key, this.lastDirection), f.Key));
+            var distances = free.Select(f => (Vector2.Distance(f.Key, this.direciton.get()), f.Key));
             var best = distances.Aggregate((l, r) => l.Item1 < r.Item1 ? l : r).Item2;
             return best;
         }
         
         // If there is no free direction, just continue walking
-        return this.lastDirection;
+        return this.direciton.get();
     }
 
     private Color DebugScanlineColor(HeroScan scan) {

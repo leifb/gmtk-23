@@ -9,6 +9,7 @@ public class SpriteMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Vector2 lastDirection = Vector2.down;
     private Vector3 lastPosition = Vector3.zero;
+    private MovementDirection characterDirection;
 
     public Dictionary<Vector2, string> animationTriggers = new Dictionary<Vector2, string> {
         { Vector2.up, "walking_down" },
@@ -29,13 +30,14 @@ public class SpriteMovement : MonoBehaviour
     {
         this.animator = this.GetComponent<Animator>();    
         this.sprite = this.GetComponent<SpriteRenderer>();    
+        this.characterDirection = this.GetComponent<MovementDirection>();
         this.lastPosition = this.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = getTestDirection();
+        Vector2 direction = GetDirection();
 
         // Don't do anything if the direction has not changed
         if (lastDirection == direction) {
@@ -70,6 +72,19 @@ public class SpriteMovement : MonoBehaviour
                 
         return Vector2.right;
         
+    }
+
+    Vector2 GetDirection() {
+        var direction = this.characterDirection.get();
+        bool isMovingHorizontal = Mathf.Abs(direction.x) > Mathf.Abs(direction.y);
+        if (isMovingHorizontal) {
+            if (direction.x > 0)
+                return Vector2.right;
+            return Vector2.left;
+        }
+        if (direction.y > 0)
+            return Vector2.up;
+        return Vector2.down;
     }
 
 }
