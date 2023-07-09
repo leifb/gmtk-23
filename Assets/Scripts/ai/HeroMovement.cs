@@ -12,7 +12,7 @@ public class HeroMovement : MonoBehaviour
     private string currentAction = "idle";
 
     private MovementTarget target;
-    private Vector2 moveIdleDirection = Vector2.zero;
+    private Vector2 lastDirection = Vector2.zero;
 
     private Dictionary<string, System.Action> movesets = new Dictionary<string, System.Action>();
 
@@ -48,9 +48,10 @@ public class HeroMovement : MonoBehaviour
     public void Update()
     {
         // Always scan for enemies and move
-        Vector3 direction = SelectFreeDirection();
+        Vector2 newDirection = SelectFreeDirection();
+        this.lastDirection = Vector2.Lerp(this.lastDirection, newDirection, Time.deltaTime * 3f);
         float step = (float) (this.speed) * Time.deltaTime;
-        this.transform.position += direction * step;
+        this.transform.position += (Vector3) this.lastDirection * step;
 
         // Attack or whatever
         this.movesets[this.currentAction]();
@@ -106,6 +107,7 @@ public class HeroMovement : MonoBehaviour
         this.currentAction = "idle";
     }
 
+    /// Calculate the direction in which the player wants to walk
     private Vector2 SelectFreeDirection() {
         // Make a ray cast in every direction
         Dictionary<Vector2, (Collider2D, float, int)> scans = this.enemyScans.ToDictionary(
@@ -130,22 +132,31 @@ public class HeroMovement : MonoBehaviour
 
         // No enemy in sight > go wherever
         if (colliderClose == null) {
-            this.moveIdleDirection = this.moveIdleDirection + Random.insideUnitCircle * 0.05f;
-            return this.moveIdleDirection;
+            this.lastDirection = this.lastDirection + Random.insideUnitCircle * 0.05f;
+            return this.lastDirection;
         }
-        
-        // Get distance to nearest target
-        float distance = Vector3.Distance(this.transform.position, this.target.get().position);
 
-        // If is safe, move towards
-        if (distance > this.reach) {
+        // If no enemies too close, move to closest
+        if (!close.Any()) {
             return (colliderClose.transform.position - this.transform.position).normalized;
         }
 
-        // If is too close, run away
-        // Select the vector with the max distance to enemy
-        Vector2 directionFree = scans.Aggregate((l, r) => l.Value.Item2 > r.Value.Item2 ? l : r).Key;
-        return directionFree;
+        // Otherwise we want to escape
+        // If there are free direction, go there
+        if (free.Any()) {
+            // If 5 or more free directions, go to average free
+            if (free.Count > 4) {
+                return free.Aggregate(Vector2.zero, (l ,r) => l + r.Key).normalized;
+            }
+
+            // Otherwise choose the free drection closes to current direction
+            var distances = free.Select(f => (Vector2.Distance(f.Key, this.lastDirection), f.Key));
+            var best = distances.Aggregate((l, r) => l.Item1 < r.Item1 ? l : r).Item2;
+            return best;
+        }
+        
+        // If there is no free direction, just continue walking
+        return this.lastDirection;
     }
 
     /// 0 - close
