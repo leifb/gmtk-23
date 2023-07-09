@@ -17,6 +17,9 @@ public class FollowerCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.target == null)
+            return;
+        
         float newX = Mathf.Lerp(this.transform.position.x, this.target.position.x, this.speed * Time.deltaTime);
         float newY = Mathf.Lerp(this.transform.position.y, this.target.position.y, this.speed * Time.deltaTime);
         this.transform.position = new Vector3(newX, newY, -10.0f);

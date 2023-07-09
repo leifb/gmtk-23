@@ -10,8 +10,13 @@ public class Health : MonoBehaviour
     public HealthBar healthBar;
 
     public void takeDamage(Damage damage) {
-        this.value -= Mathf.Clamp(this.value - damage.total, 0.0f, this.maxHealth);
+        this.value = Mathf.Clamp(this.value - damage.total, 0.0f, this.maxHealth);
         healthBar.setHealth(value);
+
+        // Check if died
+        if (this.value <= 0.0f) {
+            Destroy(this.gameObject);
+        }
     }
 
     public void heal(float amount) {
