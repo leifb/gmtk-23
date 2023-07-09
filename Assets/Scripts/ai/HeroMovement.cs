@@ -52,9 +52,13 @@ public class HeroMovement : MonoBehaviour
         // Always scan for enemies and move
         var newDirection = SelectFreeDirection();
         var lerpedDirection = this.direciton.Lerp(newDirection, Time.deltaTime * 3f); 
-        float step = (float) (this.speed) * Time.deltaTime;
-        this.transform.position += (Vector3) lerpedDirection * step;
 
+        // Move is vector is not tiny
+        if (lerpedDirection.sqrMagnitude > 0.02) {
+            float step = (float) (this.speed) * Time.deltaTime;
+            this.transform.position += (Vector3) lerpedDirection * step;
+        }
+    
         // Attack or whatever
         this.movesets[this.currentAction]();
     }
