@@ -12,6 +12,8 @@ public class MainUi : MonoBehaviour
     public GameObject buttonStart;
     public GameObject buttonResume;
     
+    private bool gameRunning = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -35,9 +37,16 @@ public class MainUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!this.mainCanvas.enabled && Input.GetButtonDown("Cancel")) {
-            this.Show();
+        // Trigger start / stop
+        if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Jump")) {
+            if (!this.gameRunning) {
+                this.StartGame();
+            }
+            else {
+                this.Toggle();
+            }
         }
+        
     }
 
     public void Quit() {
@@ -47,6 +56,7 @@ public class MainUi : MonoBehaviour
 
     public void StartGame() {
         SceneManager.LoadScene("Level0");
+        this.gameRunning = true;
         this.Hide();
         this.buttonStart.SetActive(false);
         this.buttonResume.SetActive(true);
@@ -64,5 +74,14 @@ public class MainUi : MonoBehaviour
     public void Hide() {
         this.mainCanvas.enabled = false;
         Time.timeScale = 1f;
+    }
+
+    public void Toggle() {
+        if (this.mainCanvas.enabled) {
+            this.Hide();
+        }
+        else {
+            this.Show();
+        }
     }
 }
