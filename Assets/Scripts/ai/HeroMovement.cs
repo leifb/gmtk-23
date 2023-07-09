@@ -8,6 +8,7 @@ public class HeroMovement : MonoBehaviour
     public double speed = 5.0;
     public double reach = 3;
     public float attackTime = 0.2f;
+    public float scanDistance = 6f;
 
     private string currentAction = "idle";
 
@@ -112,7 +113,7 @@ public class HeroMovement : MonoBehaviour
         // Make a ray cast for enemies in every direction
         Dictionary<Vector2, HeroScan> scans = this.enemyScans.ToDictionary(
             v => v,
-            v => HeroScan.From(this.transform, v, this.reach * 0.8)
+            v => HeroScan.From(this.transform, v, this.scanDistance, this.reach * 0.8)
         );
 
         // Group into close, distan and free
@@ -123,7 +124,7 @@ public class HeroMovement : MonoBehaviour
         // Dubug show line
         foreach (var scan in scans) {
             Color color = DebugScanlineColor(scan.Value);
-            Debug.DrawLine(this.transform.position, this.transform.position + ((Vector3) (scan.Key * 10f)), color);
+            Debug.DrawLine(this.transform.position, this.transform.position + ((Vector3) (scan.Key * this.scanDistance)), color);
         }
 
         // Set target to closest enemy

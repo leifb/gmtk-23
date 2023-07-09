@@ -28,8 +28,7 @@ public class HeroScan
         get { return this.distanceClass == Distance.Visible; }
     }
 
-    public static HeroScan From(Transform source, Vector2 direction, double closeCutoff) {
-        float distance = 10f;
+    public static HeroScan From(Transform source, Vector2 direction, float distance, double closeCutoff) {
         RaycastHit2D hit = Physics2D.Raycast(source.position, direction, distance, LayerMask.GetMask("Enemies", "World"));
         if (hit.transform == null) {
             return new HeroScan(null, distance, Distance.Free, false);
