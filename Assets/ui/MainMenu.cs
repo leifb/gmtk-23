@@ -9,6 +9,8 @@ public class MainUi : MonoBehaviour
     private static MainUi instance = null;
 
     private Canvas mainCanvas;
+    public GameObject buttonStart;
+    public GameObject buttonResume;
     
     private void Awake()
     {
@@ -45,6 +47,12 @@ public class MainUi : MonoBehaviour
 
     public void StartGame() {
         SceneManager.LoadScene("Level0");
+        this.Hide();
+        this.buttonStart.SetActive(false);
+        this.buttonResume.SetActive(true);
+    }
+
+    public void ResumeGame() {
         this.Hide();
     }
 
