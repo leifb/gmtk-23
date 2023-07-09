@@ -7,17 +7,17 @@ public class CombatStats : MonoBehaviour
 {
 
     /// Increases blunt damage
-    public double strength = 1.0;
+    public float strength = 1.0f;
     /// Increases piercing damage
-    public double dexterity = 1.0;
+    public float dexterity = 1.0f;
     /// Increases intelligence damage
-    public double intelligence = 1.0;
+    public float intelligence = 1.0f;
 
     /// Decreases blunt damage
-    public double constitution = 1.0;
+    public float constitution = 1.0f;
     /// Decreases piercing damage
-    public double agility = 1.0;
+    public float agility = 1.0f;
     /// Decreases intelligence damage
-    public double willpower = 1.0;
+    public float willpower = 1.0f;
 
 }

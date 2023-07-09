@@ -5,33 +5,24 @@ using UnityEngine;
 /// Represents the health of an entity
 public class Health : MonoBehaviour
 {
-    public double value;
-    public double maxHealth;
+    public float value = 100.0f;
+    public float maxHealth = 100.0f;
     public HealthBar healthBar;
 
-    public void SetMaxHealth(double health)
-    {
-        maxHealth = health;
-        if(healthBar!= null)
-        {
-            healthBar.SetMaxHealth((float)maxHealth);
-        }
-    }
-
     public void takeDamage(Damage damage) {
-        this.value -= damage.total;
-        healthBar.setHealth((float)value);
+        this.value -= Mathf.Clamp(this.value - damage.total, 0.0f, this.maxHealth);
+        healthBar.setHealth(value);
     }
 
-    public void heal(double amount) {
+    public void heal(float amount) {
         this.value += amount;
-        healthBar.setHealth((float)value);
+        healthBar.setHealth(value);
     }
 
     void Start()
     {
-        value = maxHealth;
-        healthBar.SetMaxHealth((float)maxHealth);
+        this.value = this.maxHealth;
+        this.healthBar.SetMaxHealth(this.maxHealth);
     }
 
 

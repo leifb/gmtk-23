@@ -53,7 +53,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4cc88749a61c7ae29868801991cbfd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
 --- !u!114 &3651701070254057459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbb015ba44ae4caa982e859422d5b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
+  value: 10
   maxHealth: 100
   healthBar: {fileID: 8458478611869965341}
 --- !u!114 &1332456725406655961
@@ -143,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blunt: 40
   piercing: 40
-  magic: 4
+  magic: 40
 --- !u!114 &389952387141087315
 MonoBehaviour:
   m_ObjectHideFlags: 0

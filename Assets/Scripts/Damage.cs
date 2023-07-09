@@ -6,16 +6,16 @@ using UnityEngine;
 public class Damage
 {
     
-    public readonly double total;
+    public readonly float total;
 
-    public Damage(double total) {
+    public Damage(float total) {
         this.total = total;
     }
 
     public static Damage fromInteraction(AttackStats source, CombatStats attacker, CombatStats target) {
-        double blunt = source.blunt * attacker.strength * (1 / target.constitution);
-        double piercing = source.piercing * attacker.dexterity * (1 / target.agility);
-        double magic = source.magic * attacker.intelligence * (1/ target.willpower);
+        float blunt = source.blunt * attacker.strength * (1 / target.constitution);
+        float piercing = source.piercing * attacker.dexterity * (1 / target.agility);
+        float magic = source.magic * attacker.intelligence * (1/ target.willpower);
 
         return new Damage(blunt + piercing + magic);
     }

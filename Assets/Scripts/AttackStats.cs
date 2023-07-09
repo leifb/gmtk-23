@@ -7,9 +7,9 @@ using UnityEngine;
 public class AttackStats : MonoBehaviour
 {
     /// Blunt damage
-    public double blunt = 0.0;
+    public float blunt = 0.0f;
     /// Piercing damage
-    public double piercing = 0.0;
+    public float piercing = 0.0f;
     /// Magic damage
-    public double magic = 0.0;
+    public float magic = 0.0f;
 }
