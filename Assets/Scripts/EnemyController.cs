@@ -17,16 +17,21 @@ public class EnemyController : MonoBehaviour
     private bool spawnHorde = true;
     public Tilemap background;
 
+    public MainUi mainMenu;
 
     // Start is called before the first frame update
     void Start()
-    {
-
+    {   
+        this.mainMenu = GameObject.Find("MainMenu").GetComponent<MainUi>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Don't do anything if game is not running
+        if (mainMenu.gameState != GameState.RUNNING)
+            return;
+        
         if (Time.time >= nextSpawn)
         {
             // Change the next update (current second + random value between 0.5s and 2s)

@@ -30,8 +30,6 @@ public class AbilityIndicator : MonoBehaviour
             if(image.sprite != activeAbility){
                 image.sprite = activeAbility;
             }
-
-            Debug.Log("Hot ability " + this.name);
         } else {
             if(image.sprite != nonActiveAbility){
                 image.sprite = nonActiveAbility;

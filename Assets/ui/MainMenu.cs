@@ -13,7 +13,11 @@ public class MainUi : MonoBehaviour
     public GameObject CanvaseDeath;
     
     
-    private GameState gameState = GameState.MAIN_MENU;
+    private GameState _gameState = GameState.MAIN_MENU;
+
+    public GameState gameState {
+        get { return this._gameState; }
+    }
 
     private void Awake()
     {
@@ -25,10 +29,10 @@ public class MainUi : MonoBehaviour
 
             string startScene = SceneManager.GetActiveScene().name;
             if (startScene == "MainMenu") {
-                this.gameState = GameState.MAIN_MENU;
+                this._gameState = GameState.MAIN_MENU;
             }
             else {
-                this.gameState = GameState.RUNNING;
+                this._gameState = GameState.RUNNING;
             }
             return;
         }
@@ -39,7 +43,7 @@ public class MainUi : MonoBehaviour
     
     void Start()
     {
-        if (this.gameState == GameState.MAIN_MENU) {
+        if (this._gameState == GameState.MAIN_MENU) {
             this.CanvasMainMenu.SetActive(true);
         }
     }
@@ -49,13 +53,13 @@ public class MainUi : MonoBehaviour
     {
         // Trigger start / stop
         if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Jump")) {
-            if (this.gameState == GameState.MAIN_MENU) {
+            if (this._gameState == GameState.MAIN_MENU) {
                 this.StartGame();
             }
-            else if (this.gameState == GameState.RUNNING) {
+            else if (this._gameState == GameState.RUNNING) {
                 this.PuaseGame();
             }
-            else if (this.gameState == GameState.PAUSED) {
+            else if (this._gameState == GameState.PAUSED) {
                 this.ResumeGame();
             }
             else {
@@ -72,25 +76,25 @@ public class MainUi : MonoBehaviour
 
     public void StartGame() {
         SceneManager.LoadScene("Level0");
-        this.gameState = GameState.RUNNING;
+        this._gameState = GameState.RUNNING;
         Time.timeScale = 1f;
         this.HideAll();
     }
 
     public void PuaseGame() {
         this.CanvasePaused.SetActive(true);
-        this.gameState = GameState.PAUSED;
+        this._gameState = GameState.PAUSED;
         Time.timeScale = 0f;
     }
 
     public void ResumeGame() {
         this.HideAll();
-        this.gameState = GameState.RUNNING;
+        this._gameState = GameState.RUNNING;
         Time.timeScale = 1f;
     }
 
     public void OnDeath() {
-        this.gameState = GameState.DEATH;
+        this._gameState = GameState.DEATH;
         this.CanvaseDeath.SetActive(true);
         Time.timeScale = 0.3f;
     }
