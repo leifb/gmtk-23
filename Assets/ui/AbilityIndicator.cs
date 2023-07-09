@@ -23,16 +23,18 @@ public class AbilityIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Transform border = this.gameObject.transform.Find("border");
+        Image image = border.gameObject.GetComponent<Image>();
+        
         if (this.ability.isActive) {
-
-            if(this.gameObject.GetComponent<Image>().sprite != activeAbility){
-                this.gameObject.GetComponent<Image>().sprite = activeAbility;
+            if(image.sprite != activeAbility){
+                image.sprite = activeAbility;
             }
 
             Debug.Log("Hot ability " + this.name);
         } else {
-            if(this.gameObject.GetComponent<Image>().sprite != nonActiveAbility){
-                this.gameObject.GetComponent<Image>().sprite = nonActiveAbility;
+            if(image.sprite != nonActiveAbility){
+                image.sprite = nonActiveAbility;
             }
 
         }
