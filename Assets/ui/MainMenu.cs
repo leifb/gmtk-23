@@ -8,30 +8,40 @@ public class MainUi : MonoBehaviour
 
     private static MainUi instance = null;
 
-    private Canvas mainCanvas;
-    public GameObject buttonStart;
-    public GameObject buttonResume;
+    public GameObject CanvasMainMenu;
+    public GameObject CanvasePaused;
+    public GameObject CanvaseDeath;
     
-    private bool gameRunning = false;
+    
+    private GameState gameState = GameState.MAIN_MENU;
 
     private void Awake()
     {
         if (instance == null)
         { 
+            // Actual start of the game here
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            string startScene = SceneManager.GetActiveScene().name;
+            if (startScene == "MainMenu") {
+                this.gameState = GameState.MAIN_MENU;
+            }
+            else {
+                this.gameState = GameState.RUNNING;
+            }
             return;
         }
         if (instance == this)
-            return; 
+            return;
         Destroy(gameObject);
     }
     
-
-    // Start is called before the first frame update
     void Start()
     {
-        this.mainCanvas = GetComponent<Canvas>();
+        if (this.gameState == GameState.MAIN_MENU) {
+            this.CanvasMainMenu.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -39,11 +49,17 @@ public class MainUi : MonoBehaviour
     {
         // Trigger start / stop
         if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Jump")) {
-            if (!this.gameRunning) {
+            if (this.gameState == GameState.MAIN_MENU) {
                 this.StartGame();
             }
+            else if (this.gameState == GameState.RUNNING) {
+                this.PuaseGame();
+            }
+            else if (this.gameState == GameState.PAUSED) {
+                this.ResumeGame();
+            }
             else {
-                this.Toggle();
+
             }
         }
         
@@ -51,37 +67,34 @@ public class MainUi : MonoBehaviour
 
     public void Quit() {
         Debug.Log("Quit requested from main menu");
-        Application.Quit(0);
+        Application.Quit();
     }
 
     public void StartGame() {
         SceneManager.LoadScene("Level0");
-        this.gameRunning = true;
-        this.Hide();
-        this.buttonStart.SetActive(false);
-        this.buttonResume.SetActive(true);
+        this.gameState = GameState.RUNNING;
+        Time.timeScale = 1f;
+        this.HideAll();
     }
 
-    public void ResumeGame() {
-        this.Hide();
-    }
-
-    public void Show() {
-        this.mainCanvas.enabled = true;
+    public void PuaseGame() {
+        this.CanvasePaused.SetActive(true);
+        this.gameState = GameState.PAUSED;
         Time.timeScale = 0f;
     }
 
-    public void Hide() {
-        this.mainCanvas.enabled = false;
+    public void ResumeGame() {
+        this.HideAll();
+        this.gameState = GameState.RUNNING;
         Time.timeScale = 1f;
     }
 
-    public void Toggle() {
-        if (this.mainCanvas.enabled) {
-            this.Hide();
-        }
-        else {
-            this.Show();
-        }
+    private void HideAll() {
+        this.CanvasMainMenu.SetActive(false);
+        this.CanvasePaused.SetActive(false);
+        this.CanvaseDeath.SetActive(false);
     }
+
+
+    
 }
