@@ -39,7 +39,7 @@ Transform:
   - {fileID: 4491113129391587795}
   - {fileID: 5652947397940783883}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8554857760479275924
 MonoBehaviour:
@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d818464e19425a5799e6cf6e9ac85f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blunt: 10
-  piercing: 0
-  magic: 0
+  blunt: 40
+  piercing: 40
+  magic: 4
 --- !u!114 &389952387141087315
 MonoBehaviour:
   m_ObjectHideFlags: 0
