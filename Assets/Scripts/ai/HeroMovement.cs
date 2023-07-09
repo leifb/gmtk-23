@@ -17,12 +17,22 @@ public class HeroMovement : MonoBehaviour
     private Dictionary<string, System.Action> movesets = new Dictionary<string, System.Action>();
 
     private List<Vector2> enemyScans = new List<Vector2> {
-        new Vector2( 1.0f,  0.0f),
+        new Vector2( 1.0f,  0.0f).normalized,
+        new Vector2( 1.0f,  0.4f).normalized,
         new Vector2( 1.0f,  1.0f).normalized,
-        new Vector2( 0.0f,  1.0f),
-        new Vector2(-1.0f, -1.0f).normalized,
-        new Vector2(-1.0f,  0.0f),
+        new Vector2( 0.4f,  1.0f).normalized,
+        new Vector2( 0.0f,  1.0f).normalized,
+        new Vector2(-0.4f,  1.0f).normalized,
         new Vector2(-1.0f,  1.0f).normalized,
+        new Vector2(-1.0f,  0.4f).normalized,
+        new Vector2(-1.0f,  0.0f).normalized,
+        new Vector2(-1.0f, -0.4f).normalized,
+        new Vector2(-1.0f, -1.0f).normalized,
+        new Vector2(-0.4f, -1.0f).normalized,
+        new Vector2( 0.0f, -1.0f).normalized,
+        new Vector2( 0.4f, -1.0f).normalized,
+        new Vector2( 1.0f, -1.0f).normalized,
+        new Vector2( 1.0f, -0.4f).normalized,
     };
 
     private float timeout = 0.2f;
@@ -98,10 +108,21 @@ public class HeroMovement : MonoBehaviour
 
     private Vector2 SelectFreeDirection() {
         // Make a ray cast in every direction
-        Dictionary<Vector2, (Collider2D, float)> scans = this.enemyScans.ToDictionary(
+        Dictionary<Vector2, (Collider2D, float, int)> scans = this.enemyScans.ToDictionary(
             v => v,
-            v => RayCast(v)
+            v => RayCast(v, this.reach * 0.8)
         );
+
+        // Group into close, distan and free
+        var close = scans.Where(s => s.Value.Item3 == 0).ToList();
+        var visible = scans.Where(s => s.Value.Item3 == 1).ToList();
+        var free = scans.Where(s => s.Value.Item3 == 2).ToList();
+
+        // Dubug show line
+        foreach (var scan in scans) {
+            Color color = DebugScanlineColor(scan.Value.Item3);
+            Debug.DrawLine(this.transform.position, this.transform.position + ((Vector3) (scan.Key * 10f)), color);
+        }
 
         // Set target to closest enemy
         Collider2D colliderClose = scans.Aggregate((l, r) => l.Value.Item2 < r.Value.Item2 ? l : r).Value.Item1;
@@ -127,13 +148,24 @@ public class HeroMovement : MonoBehaviour
         return directionFree;
     }
 
-    private (Collider2D, float) RayCast(Vector2 direction) {
+    /// 0 - close
+    /// 1 - visible
+    /// 2 - free
+    private (Collider2D, float, int) RayCast(Vector2 direction, double closeCutoff) {
         float distance = 10f;
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, -Vector2.up, distance, LayerMask.GetMask("Enemies"));
-        if (hit.collider == null) {
-            return (null, distance);
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, direction, distance, LayerMask.GetMask("Enemies"));
+        if (hit.transform == null) {
+            return (null, distance, 2);
         }
-        return (hit.collider, hit.distance);
+        return (hit.collider, hit.distance, hit.distance < closeCutoff ? 0 : 1);
+    }
+
+    private Color DebugScanlineColor(int code) {
+        if (code == 0)
+            return Color.red;
+        if (code == 1)
+            return Color.yellow;
+        return Color.white;
     }
 
 }
