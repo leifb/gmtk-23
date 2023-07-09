@@ -147,7 +147,12 @@ public class HeroMovement : MonoBehaviour
         if (free.Any()) {
             // If 5 or more free directions, go to average free
             if (free.Count > 4) {
-                return free.Aggregate(Vector2.zero, (l ,r) => l + r.Key).normalized;
+                // Get average of free directions
+                var averageOfFree = free.Aggregate(Vector2.zero, (l ,r) => l + r.Key);
+                // Add timny amount of last direction, because the average is sometimes zero
+                var averageWithBias = averageOfFree + (this.lastDirection * 0.2f);
+                // Return this normalized
+                return averageWithBias.normalized;
             }
 
             // Otherwise choose the free drection closes to current direction
