@@ -89,6 +89,12 @@ public class MainUi : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void OnDeath() {
+        this.gameState = GameState.DEATH;
+        this.CanvaseDeath.SetActive(true);
+        Time.timeScale = 0.3f;
+    }
+
     private void HideAll() {
         this.CanvasMainMenu.SetActive(false);
         this.CanvasePaused.SetActive(false);

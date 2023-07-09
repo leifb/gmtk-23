@@ -16,5 +16,8 @@ public class Character : MonoBehaviour
 
     }
 
+    void OnDestroy() {
+        GameObject.Find("MainMenu").GetComponent<MainUi>().OnDeath();
+    }
     
 }
