@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 8929600315350247309}
   - component: {fileID: 8600974560469369668}
   - component: {fileID: 5443264915437919247}
+  - component: {fileID: 2185438146900601714}
   m_Layer: 6
   m_Name: ArmorShroom
   m_TagString: Untagged
@@ -394,6 +395,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!114 &2185438146900601714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613258710832679197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c041ad90ee8c97bc1a43d714e1772e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5362117213836322936
 GameObject:
   m_ObjectHideFlags: 0

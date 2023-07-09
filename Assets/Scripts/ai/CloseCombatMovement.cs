@@ -12,6 +12,7 @@ public class CloseCombatMovement : MonoBehaviour
     private string currentAction = "idle";
 
     private MovementTarget target;
+    private MovementDirection direction;
 
     private Dictionary<string, System.Action> movesets = new Dictionary<string, System.Action>();
 
@@ -21,6 +22,7 @@ public class CloseCombatMovement : MonoBehaviour
 
     public void Start() {
         this.target = this.GetComponent<MovementTarget>();
+        this.direction = this.GetComponent<MovementDirection>();
         this.movesets["idle"] = this.UpdateIdle;
         this.movesets["moveIdle"] = this.UpdateMoveIdle;
         this.movesets["searchForTarget"] = this.UpdateSearchForTarget;
