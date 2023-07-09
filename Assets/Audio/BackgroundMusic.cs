@@ -26,6 +26,7 @@ public class BackgroundMusic : MonoBehaviour
     void Start()
     {
         this.audioSource = this.GetComponent<AudioSource>();
+        this.UpdateVolume(0.5f);
     }
 
     // Update is called once per frame
@@ -35,6 +36,6 @@ public class BackgroundMusic : MonoBehaviour
     }
 
     public void UpdateVolume(float value) {
-        this.audioSource.volume = value;
+        this.audioSource.volume = Mathf.Exp(value * 5f -5f) -0.01f;
     }
 }
