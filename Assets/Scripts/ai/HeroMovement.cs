@@ -109,25 +109,25 @@ public class HeroMovement : MonoBehaviour
 
     /// Calculate the direction in which the player wants to walk
     private Vector2 SelectFreeDirection() {
-        // Make a ray cast in every direction
-        Dictionary<Vector2, (Collider2D, float, int)> scans = this.enemyScans.ToDictionary(
+        // Make a ray cast for enemies in every direction
+        Dictionary<Vector2, HeroScan> scans = this.enemyScans.ToDictionary(
             v => v,
-            v => RayCast(v, this.reach * 0.8)
+            v => HeroScan.From(this.transform, v, this.reach * 0.8)
         );
 
         // Group into close, distan and free
-        var close = scans.Where(s => s.Value.Item3 == 0).ToList();
-        var visible = scans.Where(s => s.Value.Item3 == 1).ToList();
-        var free = scans.Where(s => s.Value.Item3 == 2).ToList();
+        var close = scans.Where(s => s.Value.close).ToList();
+        var visible = scans.Where(s => s.Value.visible).ToList();
+        var free = scans.Where(s => s.Value.free).ToList();
 
         // Dubug show line
         foreach (var scan in scans) {
-            Color color = DebugScanlineColor(scan.Value.Item3);
+            Color color = DebugScanlineColor(scan.Value);
             Debug.DrawLine(this.transform.position, this.transform.position + ((Vector3) (scan.Key * 10f)), color);
         }
 
         // Set target to closest enemy
-        Collider2D colliderClose = scans.Aggregate((l, r) => l.Value.Item2 < r.Value.Item2 ? l : r).Value.Item1;
+        Collider2D colliderClose = scans.Aggregate((l, r) => l.Value.distance < r.Value.distance ? l : r).Value.collider;
         this.target.set(colliderClose?.transform);
 
         // No enemy in sight > go wherever
@@ -159,22 +159,10 @@ public class HeroMovement : MonoBehaviour
         return this.lastDirection;
     }
 
-    /// 0 - close
-    /// 1 - visible
-    /// 2 - free
-    private (Collider2D, float, int) RayCast(Vector2 direction, double closeCutoff) {
-        float distance = 10f;
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, direction, distance, LayerMask.GetMask("Enemies"));
-        if (hit.transform == null) {
-            return (null, distance, 2);
-        }
-        return (hit.collider, hit.distance, hit.distance < closeCutoff ? 0 : 1);
-    }
-
-    private Color DebugScanlineColor(int code) {
-        if (code == 0)
+    private Color DebugScanlineColor(HeroScan scan) {
+        if (scan.close)
             return Color.red;
-        if (code == 1)
+        if (scan.visible)
             return Color.yellow;
         return Color.white;
     }
