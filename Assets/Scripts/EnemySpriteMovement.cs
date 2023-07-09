@@ -11,9 +11,9 @@ public class EnemySpriteMovement : MonoBehaviour
     private MovementDirection movementDirection;
 
     public Dictionary<Vector2, string> animationTriggers = new Dictionary<Vector2, string> {
-        { Vector2.left, "warrior_walking" },
-        { Vector2.right, "warrior_walking" },
-        { Vector2.zero, "warrior_idle" },
+        { Vector2.left, "walking" },
+        { Vector2.right, "walking" },
+        { Vector2.zero, "idle" },
     };
 
     public Dictionary<Vector2, bool> flip = new Dictionary<Vector2, bool> {

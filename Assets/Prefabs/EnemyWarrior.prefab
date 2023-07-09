@@ -198,8 +198,11 @@ GameObject:
   - component: {fileID: 8600974560469369668}
   - component: {fileID: 5443264915437919247}
   - component: {fileID: 2185438146900601714}
+  - component: {fileID: 7726021546065497270}
+  - component: {fileID: 2962162576270184799}
+  - component: {fileID: 551346756482730363}
   m_Layer: 6
-  m_Name: ArmorShroom
+  m_Name: EnemyWarrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,6 +408,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c041ad90ee8c97bc1a43d714e1772e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &7726021546065497270
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613258710832679197}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab50f223f72ccce47ba3841911614e41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2962162576270184799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613258710832679197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aff67e46bec520d5a64e15cba73ecbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &551346756482730363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613258710832679197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6097e19995bf99772991adce3b32e0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5362117213836322936

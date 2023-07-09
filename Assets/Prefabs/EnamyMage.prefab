@@ -18,8 +18,11 @@ GameObject:
   - component: {fileID: -4228476539818147039}
   - component: {fileID: 3672635244678591745}
   - component: {fileID: 1402447026330289886}
+  - component: {fileID: 1283987401558898155}
+  - component: {fileID: 3549831031938441860}
+  - component: {fileID: 8939261953991439547}
   m_Layer: 6
-  m_Name: MagiShroom
+  m_Name: EnamyMage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,12 +85,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 538776548a0ec1d45a4ebba45f0edc3f, type: 3}
+  m_Sprite: {fileID: 571320622, guid: 582a9acfe57212419b7d17adc642117b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 1.28, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -225,6 +228,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c041ad90ee8c97bc1a43d714e1772e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1283987401558898155
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253315443853858791}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32cf2df267e50e925bfc3a649d355e4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3549831031938441860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253315443853858791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aff67e46bec520d5a64e15cba73ecbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8939261953991439547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253315443853858791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6097e19995bf99772991adce3b32e0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7886444477365830145
