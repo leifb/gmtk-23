@@ -6,6 +6,7 @@ public class AbilityInput : MonoBehaviour
 {
 
     private Dictionary<string, Ability> hotkeys;
+    private int activeAbilites = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,16 @@ public class AbilityInput : MonoBehaviour
     {
         foreach (var pair in this.hotkeys) {
             if (Input.GetButtonDown(pair.Key)) {
-                pair.Value.triggerStart();
+                activeAbilites++;
+                if (activeAbilites <= 4) {
+                    pair.Value.triggerStart();
+                }
             }
             if (Input.GetButtonUp(pair.Key)) {
-                pair.Value.triggerEnd();
+                activeAbilites--;
+                if (activeAbilites <= 4){
+                    pair.Value.triggerEnd();
+                }
             }
         }
     }
