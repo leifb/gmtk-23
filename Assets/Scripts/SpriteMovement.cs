@@ -8,6 +8,7 @@ public class SpriteMovement : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sprite;
     private Vector2 lastDirection = Vector2.down;
+    private Vector3 lastPosition = Vector3.zero;
 
     public Dictionary<Vector2, string> animationTriggers = new Dictionary<Vector2, string> {
         { Vector2.up, "walking_down" },
@@ -28,6 +29,7 @@ public class SpriteMovement : MonoBehaviour
     {
         this.animator = this.GetComponent<Animator>();    
         this.sprite = this.GetComponent<SpriteRenderer>();    
+        this.lastPosition = this.transform.position;
     }
 
     // Update is called once per frame
@@ -69,4 +71,5 @@ public class SpriteMovement : MonoBehaviour
         return Vector2.right;
         
     }
+
 }
